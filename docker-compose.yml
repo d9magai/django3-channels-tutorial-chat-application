@@ -1,0 +1,15 @@
+version: '3'
+services:
+    app:
+        build: .
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/srv
+        ports:
+            - "8000:8000"
+        depends_on:
+            - redis
+    redis:
+        image: redis:5.0.7-alpine
+volumes:
+    .:
